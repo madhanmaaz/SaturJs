@@ -1,0 +1,18 @@
+{
+  "name": "saturjs",
+  "version": "1.0.0",
+  "description": "A cosmic-inspired web library for seamless server-side rendering and dynamic state management.",
+  "main": "index.js",
+  "scripts": {},
+  "author": "madhanmaaz",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madhanmaaz/saturjs"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "html-minifier": "^4.0.0",
+    "node-html-parser": "^6.1.13",
+    "ws": "^8.18.0"
+  }
+}
