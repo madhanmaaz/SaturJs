@@ -1,0 +1,46 @@
+{
+	"name": "saturjs",
+	"version": "1.0.2",
+	"description": "A lightweight web library that combines the best of server-side rendering and client-side state management.",
+	"main": "src/index.js",
+	"scripts": {},
+	"author": {
+		"name": "madhanmaaz",
+		"url": "https://madhanmaaz.netlify.app"
+	},
+	"files": [
+		"LICENSE",
+		"README.MD",
+		"src/"
+	],
+	"license": "ISC",
+	"dependencies": {
+		"acorn": "^8.13.0",
+		"acorn-walk": "^8.3.4",
+		"esbuild": "^0.24.0",
+		"express": "^4.21.1",
+		"html-minifier": "^4.0.0",
+		"node-html-better-parser": "^1.4.7",
+		"ws": "^8.18.0"
+	},
+	"keywords": [
+		"web library",
+		"web",
+		"state",
+		"expressjs",
+		"express",
+		"framework",
+		"sinatra",
+		"web",
+		"http",
+		"rest",
+		"restful",
+		"router",
+		"app",
+		"api",
+		"react"
+	],
+	"bugs": {
+		"url": "https://github.com/madhanmaaz/SaturJs/issues"
+	}
+}
