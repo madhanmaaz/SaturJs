@@ -63,6 +63,7 @@ const FileManager = {
         )
 
         return {
+            requirePath: componentChunkJsPath.replace(config.buildDIR.root, ""),
             componentChunkJsPath,
             webPath: componentChunkJsPath.replace(config.buildDIR.public.root, "")
         }
@@ -293,15 +294,16 @@ function buildComponent(document, settings, imports) {
     })
     `
 
-    const { componentChunkJsPath, webPath } = FileManager.generateChunkjsPath(settings)
+    const { componentChunkJsPath, webPath, requirePath } = FileManager.generateChunkjsPath(settings)
     RuntimeCache.componentChunks.push(`<script src="${webPath}${__BUILDID}"></script>`)
     FileManager.createDirectory(path.dirname(componentChunkJsPath))
     FileManager.writeFile(componentChunkJsPath, jsChunkCode)
 
     // componentjs
     let componentJsCode = `
+    const path = require("path")
     const __componentHelpers__ = require("saturjs/src/component-utils")
-    const __componentChunk__ = require(${JSON.stringify(componentChunkJsPath)})
+    const __componentChunk__ = require(path.join(process.cwd(), ".satur", ${JSON.stringify(requirePath)}))
     const __componentSettings__ = ${JSON.stringify(settings)}
 
     function __render__(__pageProps__, props = {}) {
