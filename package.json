@@ -4,6 +4,10 @@
 	"description": "A lightweight web library that combines the best of server-side rendering and client-side state management.",
 	"main": "src/index.js",
 	"scripts": {},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/madhanmaaz/saturjs"
+	},
 	"author": {
 		"name": "madhanmaaz",
 		"url": "https://madhanmaaz.netlify.app"
@@ -11,8 +15,7 @@
 	"files": [
 		"LICENSE",
 		"README.MD",
-		"src/",
-		"saturjs_logo.webp"
+		"src/"
 	],
 	"license": "ISC",
 	"dependencies": {
