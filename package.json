@@ -1,6 +1,6 @@
 {
 	"name": "saturjs",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "A lightweight web library that combines the best of server-side rendering and client-side state management.",
 	"main": "src/index.js",
 	"scripts": {},
@@ -11,7 +11,8 @@
 	"files": [
 		"LICENSE",
 		"README.MD",
-		"src/"
+		"src/",
+		"saturjs_logo.webp"
 	],
 	"license": "ISC",
 	"dependencies": {
