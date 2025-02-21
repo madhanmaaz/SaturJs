@@ -1,4 +1,4 @@
-const HTMLParser = require("node-html-better-parser")
+const HTMLParser = require("node-html-parser")
 const htmlMinifier = require("html-minifier")
 const acornWalk = require("acorn-walk")
 const uglifyJS = require("uglify-js")
@@ -119,7 +119,7 @@ const ComponentParser = {
 
         firstElement.setAttribute("element", helpers.wrapDelimiter("$ctxKey"))
         attributeModifier.modifyAttributes(firstElement)
-        return helpers.reverseHTML(firstElement.outerHTML)
+        return firstElement.outerHTML
     }
 }
 
@@ -279,7 +279,7 @@ function buildComponent(document, settings, imports) {
             Satur.components["${settings.name}"] = __template__
             Satur.callbacks["${settings.name}"] = __hooksScript__
         }
-    })(function () {
+    })(function (packageName) {
         if(typeof Satur === "undefined") {
             const proxy = new Proxy({}, {
                 get(target, key) {
@@ -290,7 +290,7 @@ function buildComponent(document, settings, imports) {
             return proxy
         }
             
-        return Satur.browserPackages
+        return Satur.browserPackages[packageName]
     })
     `
 
@@ -351,8 +351,9 @@ function buildPage(document, settings, imports) {
     // Page head alters
     document.querySelector("head").appendChild(`
     ${RuntimeCache.cssChunks.join('')}
-    ${RuntimeCache.browserPackages.join('')}
+    
     <script src="/browser-packages/client-runtime.js"></script>
+    ${RuntimeCache.browserPackages.join('')}
     `)
 
     RuntimeCache.cssChunks = []
@@ -436,12 +437,7 @@ function buildTemplate(pagePath, isComponent) {
         })
     }
 
-    const document = HTMLParser.parse(htmlData, {
-        script: true,
-        style: true,
-        pre: true,
-    })
-
+    const document = HTMLParser.parse(htmlData, {})
     const settings = {
         name: path.basename(pagePath).split(".")[0],
         filename: FileManager.generateBuildPath(pagePath),

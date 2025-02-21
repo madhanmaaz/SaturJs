@@ -115,7 +115,7 @@ function hooksDataCollector(clientCalback, props, settings) {
             return props
         },
         function defProxy(data) {
-            Object.assign(store, data)
+            return Object.assign(store, data)
         },
         function defMethods(methods) {
             Object.assign(store, methods)

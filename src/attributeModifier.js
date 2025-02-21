@@ -1,4 +1,4 @@
-const { NodeType } = require("node-html-better-parser")
+const { NodeType } = require("node-html-parser")
 const helpers = require("./helpers")
 
 const voidAttributes = [
